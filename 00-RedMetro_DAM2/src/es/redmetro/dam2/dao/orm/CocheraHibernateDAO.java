@@ -5,23 +5,20 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import es.redmetro.dam2.dao.ICocheraDao;
-import es.redmetro.dam2.excepciones.RedMetroException;
+import es.redmetro.dam2.dao.IBaseDeDatos;
 import es.redmetro.dam2.utilidades.UtilidadHibernate;
 import es.redmetro.dam2.vo.Cochera;
 
-public class CocheraOrmDao implements ICocheraDao {
+public class CocheraHibernateDAO implements IBaseDeDatos<Cochera> {
 
-	public int crearCochera(Cochera cochera) throws RedMetroException {
-		int resultado = 0;
+	public void crear(Cochera entidad) {
 		Session session = UtilidadHibernate.getSession();
 		
 		Transaction tx = session.beginTransaction();
 		
 		try {
-			session.save(cochera);
+			session.save(entidad);
 			tx.commit();
-			resultado=1;
 		}
 		catch(Exception e) {
 			System.out.println("La cochera ya existe en la base de datos");
@@ -29,53 +26,46 @@ public class CocheraOrmDao implements ICocheraDao {
 		finally {
 			session.close();
 		}
-		return resultado;
 	}
 
-	public int modificarCochera(Cochera cochera) throws RedMetroException {
-		int resultado=0;
+	public void modificar(Cochera entidad) {
 		Session session = UtilidadHibernate.getSession();
 		
 		Transaction tx = session.beginTransaction();
 		
 		try {
-			session.update(cochera);
+			session.update(entidad);
 			tx.commit();
-			resultado=1;
 		}
 		catch(Exception e) {
-			System.out.println("No existe la entidad a modificar");
+			System.out.println("No existe la cochera a modificar");
 		}
 		finally {
 			session.close();
 		}
-		return resultado;
 	}
 
-	public int borrarCochera(int codigoCochera) throws RedMetroException {
-		int resultado=0;
+	public void borrar(Cochera entidad) {
 		Session session = UtilidadHibernate.getSession();
 		
 		Transaction tx = session.beginTransaction();
 		
-		Cochera cochera = session.find(Cochera.class, codigoCochera);
+		Cochera cochera = session.find(Cochera.class, entidad.getCodigoCochera());
 		
 		if(cochera!=null) {
-			session.delete(cochera);
+			session.delete(entidad);
 			tx.commit();
-			resultado=1;
 		}
 		else
 			System.out.println("No existe la cochera a borrar");
 		
 		session.close();
-		return resultado;
 	}
 
-	public Cochera consultarCochera(int codigoCochera) throws RedMetroException {
+	public Cochera consultarPorID(int codEntidad, Class<Cochera> clase) {
 		Session session = UtilidadHibernate.getSession();
 		
-		Cochera cochera = session.find(Cochera.class, codigoCochera);
+		Cochera cochera = session.find(Cochera.class, codEntidad);
 		
 		if(cochera==null) 
 			System.out.println("No existe la cochera");
@@ -84,12 +74,11 @@ public class CocheraOrmDao implements ICocheraDao {
 		return cochera;
 	}
 
-	public List<Cochera> consultarCocheras() throws RedMetroException {
+	public List<Cochera> consultarLista(Class<Cochera> clase) {
 		List<Cochera> listaCocheras = null;
 		Session session = UtilidadHibernate.getSession();
 		
 		listaCocheras = session.createNativeQuery("SELECT * FROM T_COCHERA", Cochera.class).list();
 		return listaCocheras;
 	}
-
 }
