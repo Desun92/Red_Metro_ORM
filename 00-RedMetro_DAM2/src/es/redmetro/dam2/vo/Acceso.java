@@ -3,9 +3,19 @@ package es.redmetro.dam2.vo;
 public class Acceso {
 	private int codigoAcceso;
 	private String nombre;
-	private boolean tieneAccesoDiscapacidad;
+	private int tieneAccesoDiscapacidad;
 	private Estacion estacion;
 	
+	public Acceso() {
+		
+	}
+	
+	public Acceso(int codigoAcceso, String nombre, int tieneAccesoDiscapacidad, Estacion estacion) {
+		this.codigoAcceso=codigoAcceso;
+		this.nombre=nombre;
+		this.tieneAccesoDiscapacidad=tieneAccesoDiscapacidad;
+		this.estacion=estacion;
+	}
 	
 	public int getCodigoAcceso() {
 		return codigoAcceso;
@@ -19,10 +29,10 @@ public class Acceso {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public boolean isTieneAccesoDiscapacidad() {
+	public int isTieneAccesoDiscapacidad() {
 		return tieneAccesoDiscapacidad;
 	}
-	public void setTieneAccesoDiscapacidad(boolean tieneAccesoDiscapacidad) {
+	public void setTieneAccesoDiscapacidad(int tieneAccesoDiscapacidad) {
 		this.tieneAccesoDiscapacidad = tieneAccesoDiscapacidad;
 	}
 	public Estacion getEstacion() {

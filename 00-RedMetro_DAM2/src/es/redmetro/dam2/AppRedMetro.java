@@ -1,56 +1,46 @@
 package es.redmetro.dam2;
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import es.redmetro.dam2.dao.IBaseDeDatos;
 import es.redmetro.dam2.dao.orm.*;
+import es.redmetro.dam2.utilidades.APPPruebaFTP;
+import es.redmetro.dam2.utilidades.GestorConexion;
 import es.redmetro.dam2.vo.*;
 
 public class AppRedMetro {
 	public static void main(String[] args) {
+		
 		AppRedMetro red = new AppRedMetro();
-		IBaseDeDatos operacion = new TrenHibernateDAO();
-		LineaHibernateDAO operacionLinea = new LineaHibernateDAO();
-		CocheraHibernateDAO operacionCochera = new CocheraHibernateDAO();
-		EstacionHibernateDAO operacionEstacion = new EstacionHibernateDAO();
 		AccesoHibernateDAO operacionAcceso = new AccesoHibernateDAO();
+		CocheraHibernateDAO operacionCochera = new CocheraHibernateDAO();
+		ColorHibernateDAO operacionColor = new ColorHibernateDAO();
+		EstacionHibernateDAO operacionEstacion = new EstacionHibernateDAO();
+		LineaHibernateDAO operacionLinea = new LineaHibernateDAO();
+		TrenHibernateDAO operacionTren = new TrenHibernateDAO();
+
+
+		List<Tren> listaTrenes = new ArrayList<Tren>();
+		List<Acceso> listaAccesos = new ArrayList<Acceso>();
+		List<Estacion> listaEstaciones = new ArrayList<Estacion>();
+		APPPruebaFTP.parseo(listaTrenes,listaAccesos,listaEstaciones);
 		
-		/*Estacion estacion = new Estacion();
-		estacion.setCodigoEstacion(0);
-		estacion.setDireccion("La que sea");
-		estacion.setlineas(null);
-		estacion.setNombre("El nombre");
-		//operacionEstacion.crear(estacion);
-		
-		
-		Acceso acceso = new Acceso();
-		acceso.setCodigoAcceso(0);
-		acceso.setEstacion(estacion);
-		acceso.setNombre("AccesoA");
-		acceso.setTieneAccesoDiscapacidad(true);
-		operacionAcceso.crear(acceso);*/
-		
-		//operacionEstacion.modificar(estacion);
-		
-		/*Estacion estacion = operacionEstacion.consultarPorID(1, Estacion.class);
-		System.out.println(estacion.toString());*/
-		
-		List<Linea> lineas = operacionLinea.consultarLista(Linea.class);
-		for(Linea line : lineas) {
-			System.out.println(line.toString());
+		for(Tren tren : listaTrenes) {
+			operacionTren.crear(tren);
 		}
 		
-		/*Tren tren = new Tren();
-		Date fecha = new Date(11/12/2001);
-		tren.setCodigoTren(0);
-		tren.setLinea(operacionLinea.consultarPorID(11, Linea.class));
-		tren.setCochera(operacionCochera.consultarPorID(13, Cochera.class));
-		tren.setAnyoIncorporacion(fecha);
-		tren.setEmpresaConstructora("La que sea");
-		tren.setModelo("Alvia 500-S");
+		for(Estacion estacion : listaEstaciones) {
+			operacionEstacion.crear(estacion);
+		}
 		
-		operacion.crear(tren);*/
+		for(Acceso acceso : listaAccesos) {
+			operacionAcceso.crear(acceso);
+		}
+		
 	}
 }
 

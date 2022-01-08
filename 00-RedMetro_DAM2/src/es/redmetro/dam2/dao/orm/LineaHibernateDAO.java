@@ -1,6 +1,7 @@
 package es.redmetro.dam2.dao.orm;
 
 import java.util.List;
+import java.util.Set;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -79,6 +80,7 @@ public class LineaHibernateDAO implements IBaseDeDatos<Linea> {
 		Session session = UtilidadHibernate.getSession();
 		
 		listaLineas = session.createNativeQuery("SELECT * FROM T_LINEA", Linea.class).list();
+		
 		return listaLineas;
 	}
 

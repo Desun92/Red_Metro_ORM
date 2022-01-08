@@ -1,18 +1,18 @@
 package es.redmetro.dam2.vo;
 
-import java.util.List;
+import java.util.Set;
 
 public class Estacion {
 	
 	private int codigoEstacion;
 	private String nombre;
 	private String direccion;
-	private List<Linea> lineas;
+	private Set<Linea> lineas;
 	
-	public List<Linea> getlineas() {
+	public Set<Linea> getLineas() {
 		return lineas;
 	}
-	public void setlineas(List<Linea> listaLineas) {
+	public void setLineas(Set<Linea> listaLineas) {
 		this.lineas = listaLineas;
 	}
 	public int getCodigoEstacion() {
@@ -30,7 +30,14 @@ public class Estacion {
 	public String getDireccion() {
 		return direccion;
 	}
+
 	public void setDireccion(String direccion) {
 		this.direccion = direccion;
+	}
+	
+	@Override
+	public String toString() {
+		return "Estacion [codigoEstacion=" + codigoEstacion + ", nombre=" + nombre + ", direccion=" + direccion
+				+ ", lineas=" + lineas + "]";
 	}
 }

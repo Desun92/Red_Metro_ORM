@@ -9,7 +9,7 @@
         </id>
 
         <property name="nombre" column="nombre" type="java.lang.String"/>
-        <property name="tieneAccesoDiscapacidad" column="acceso_discapacidad" type="java.lang.Boolean"/>
+        <property name="tieneAccesoDiscapacidad" column="acceso_discapacidad" type="java.lang.Integer"/>
         
         <many-to-one class="es.redmetro.dam2.vo.Estacion"
       	name="estacion" cascade="all"/>
