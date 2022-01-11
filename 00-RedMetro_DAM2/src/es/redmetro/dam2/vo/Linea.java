@@ -8,7 +8,6 @@ public class Linea {
 	private int codigoLinea;
 	private String nombreCorto;
 	private String nombreLargo;
-	private Set<Estacion> estaciones;
 	private Color color;
 	private float kilometros;
 	
@@ -30,12 +29,6 @@ public class Linea {
 	public void setNombreLargo(String nombreLargo) {
 		this.nombreLargo = nombreLargo;
 	}
-	public Set<Estacion> getEstaciones() {
-		return estaciones;
-	}
-	public void setEstaciones(Set<Estacion> estaciones) {
-		this.estaciones = estaciones;
-	}
 	public Color getColor() {
 		return color;
 	}
@@ -48,10 +41,10 @@ public class Linea {
 	public void setKilometros(float kilometros) {
 		this.kilometros = kilometros;
 	}
-	
 	@Override
 	public String toString() {
 		return "Linea [codigoLinea=" + codigoLinea + ", nombreCorto=" + nombreCorto + ", nombreLargo=" + nombreLargo
-				+ ", estaciones=" + estaciones + ", color=" + color + ", kilometros=" + kilometros + "]";
+				+ ", color=" + color + ", kilometros=" + kilometros + "]";
 	}
+	
 }

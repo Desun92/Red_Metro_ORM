@@ -11,15 +11,7 @@
         <property name="nombreCorto" column="nombre_corto" type="java.lang.String"/>
         <property name="nombreLargo" column="nombre_largo" type="java.lang.String"/>
         <property name="kilometros" column="kilometros" type="java.lang.Float"/>
-        
-        <set name="estaciones" table="t_linea_estaciones" cascade="all" inverse="true" lazy="true">
-        	<key>
-        		<column name="cod_linea" not-null="true"/>
-        	</key>
-        	<many-to-many class="es.redmetro.dam2.vo.Estacion">
-        		<column name="cod_estacion" not-null="true"/>
-        	</many-to-many>
-        </set>
+
         <many-to-one name="color" class="es.redmetro.dam2.vo.Color"
         column="cod_color" unique="true" not-null="true" cascade="all"/>
     </class>

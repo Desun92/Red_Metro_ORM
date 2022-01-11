@@ -36,6 +36,7 @@
         <mapping resource="es/redmetro/dam2/vo/hibernate/Estacion.hbm.xml"/>
         <mapping resource="es/redmetro/dam2/vo/hibernate/Acceso.hbm.xml"/>
         <mapping resource="es/redmetro/dam2/vo/hibernate/Color.hbm.xml"/>
+        <mapping resource="es/redmetro/dam2/vo/hibernate/LineaEstacion.hbm.xml"/>
 
     </session-factory>
  </hibernate-configuration>

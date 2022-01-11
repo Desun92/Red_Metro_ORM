@@ -10,23 +10,6 @@
 
         <property name="nombre" column="nombre" type="java.lang.String"/>
         <property name="direccion" column="direccion" type="java.lang.String"/>
-        
-        <set name="lineas" table="t_linea_estaciones" cascade="all" inverse="false" lazy="true">
-        	<key>
-        		<column name="cod_estacion" not-null="true"/>
-        	</key>
-        	<many-to-many class="es.redmetro.dam2.vo.Linea">
-        		<column name="cod_linea" not-null="true"/>
-        	</many-to-many>
-        </set>
-        
-        <!--<idbag name="lineas" table="t_linea_estaciones" cascade="all">
-            <collection-id type="int" column="cod_linea">
-                <generator class="increment"></generator>
-            </collection-id>
-            <key column="cod_linea" />
-            <many-to-many class="es.redmetro.dam2.vo.Linea"
-                column="cod_linea" />
-        </idbag>-->
+       
     </class>
 </hibernate-mapping>

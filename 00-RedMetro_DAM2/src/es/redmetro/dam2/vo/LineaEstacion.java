@@ -1,9 +1,13 @@
 package es.redmetro.dam2.vo;
 
-public class LineaEstacion {
+import java.io.Serializable;
+
+public class LineaEstacion implements Serializable{
+	
 	private Linea linea;
 	private Estacion estacion;
 	private int ordenM;
+	
 	public Linea getLinea() {
 		return linea;
 	}

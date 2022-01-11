@@ -23,7 +23,12 @@ public class AppRedMetro {
 		LineaHibernateDAO operacionLinea = new LineaHibernateDAO();
 		TrenHibernateDAO operacionTren = new TrenHibernateDAO();
 
-
+		/*Color color = new Color();
+		color.setCodigoColor(14);
+		color.setNombre("Negro");
+		color.setCodigoHexadecimal("#438fc0");
+		operacionColor.crear(color);*/
+		
 		List<Tren> listaTrenes = new ArrayList<Tren>();
 		List<Acceso> listaAccesos = new ArrayList<Acceso>();
 		List<Estacion> listaEstaciones = new ArrayList<Estacion>();
