@@ -30,13 +30,13 @@
         <!-- Specifying Session Context -->
         <property name="hibernate.current_session_context_class">org.hibernate.context.internal.ThreadLocalSessionContext</property>
         <!-- Mapping With Model Class Containing Annotations --> 
-        <mapping resource="es/redmetro/dam2/vo/hibernate/Cochera.hbm.xml"/>
-        <mapping resource="es/redmetro/dam2/vo/hibernate/Tren.hbm.xml"/>
-        <mapping resource="es/redmetro/dam2/vo/hibernate/Linea.hbm.xml"/>
-        <mapping resource="es/redmetro/dam2/vo/hibernate/Estacion.hbm.xml"/>
-        <mapping resource="es/redmetro/dam2/vo/hibernate/Acceso.hbm.xml"/>
-        <mapping resource="es/redmetro/dam2/vo/hibernate/Color.hbm.xml"/>
-        <mapping resource="es/redmetro/dam2/vo/hibernate/LineaEstacion.hbm.xml"/>
+        <mapping class="es.redmetro.dam2.vo.Acceso"/>
+        <mapping class="es.redmetro.dam2.vo.Cochera"/>
+        <mapping class="es.redmetro.dam2.vo.Color"/>
+        <mapping class="es.redmetro.dam2.vo.Estacion"/>
+        <mapping class="es.redmetro.dam2.vo.Linea"/>
+        <mapping class="es.redmetro.dam2.vo.LineaEstacion"/>
+        <mapping class="es.redmetro.dam2.vo.Tren"/>
 
     </session-factory>
  </hibernate-configuration>
