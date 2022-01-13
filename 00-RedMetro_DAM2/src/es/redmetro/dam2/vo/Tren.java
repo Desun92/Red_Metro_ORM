@@ -1,14 +1,40 @@
 package es.redmetro.dam2.vo;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.ForeignKey;
 import java.util.Date;
 
+@Entity
+@Table(name="T_TREN")
 public class Tren {
 	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="cod_tren")
 	private int codigoTren;
+	
+	@Column(name="modelo")
 	private String modelo;
+	
+	@Column(name="año_incorporacion")
 	private Date anyoIncorporacion;
+	
+	@Column(name="empresa_constructora")
 	private String empresaConstructora;
+	
+	@ManyToOne
+	@JoinColumn(name="cod_linea", referencedColumnName="cod_linea", foreignKey = @ForeignKey(name="fk_linea"))
 	private Linea linea;
+	
+	@ManyToOne
+	@JoinColumn(name="cod_cochera", referencedColumnName="cod_cochera", foreignKey = @ForeignKey(name="fk_cochera"))	
 	private Cochera cochera;
 	
 	public Tren() {

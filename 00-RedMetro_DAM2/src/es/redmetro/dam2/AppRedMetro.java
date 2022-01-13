@@ -18,8 +18,8 @@ public class AppRedMetro {
 		
 		//PRUEBA JPA
 		
-		/*UtilidadHibernate utilidad = new UtilidadHibernate();
-		utilidad.getSession(); CREAR LAS TABLAS*/
+		UtilidadHibernate utilidad = new UtilidadHibernate();
+		utilidad.getSession(); //CREAR LAS TABLAS
 		
 		AppRedMetro red = new AppRedMetro();
 		AccesoHibernateDAO operacionAcceso = new AccesoHibernateDAO();
