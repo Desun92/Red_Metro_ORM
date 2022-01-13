@@ -18,8 +18,12 @@ public class AppRedMetro {
 		
 		//PRUEBA JPA
 		
-		UtilidadHibernate utilidad = new UtilidadHibernate();
-		utilidad.getSession(); //CREAR LAS TABLAS
+		//CREAR LAS TABLAS (Sé que no es necesario hacer esto, pues las instrucciones de inserción o 
+		//modificación de datos ya hacen el getSession, pero para construir la base sin datos y ver
+		//los cambios que iba realizando, preferí hacerlo así)
+		
+		/*UtilidadHibernate utilidad = new UtilidadHibernate();
+		utilidad.getSession();*/
 		
 		AppRedMetro red = new AppRedMetro();
 		AccesoHibernateDAO operacionAcceso = new AccesoHibernateDAO();

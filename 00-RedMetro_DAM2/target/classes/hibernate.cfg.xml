@@ -9,7 +9,7 @@
 
         <!-- Database Connection Settings -->
         <property name="hibernate.connection.driver_class">org.mariadb.jdbc.Driver</property>
-         <property name="hibernate.connection.url">jdbc:mariadb://localhost:3306/redmetrojpa</property>
+         <property name="hibernate.connection.url">jdbc:mariadb://localhost:33066/redmetrojpa</property>
         <property name="hibernate.connection.username">aadd</property>
         <property name="hibernate.connection.password">aadd</property>
         
@@ -25,7 +25,7 @@
         <property name="hibernate.connection.pool">true</property> 
         <property name="hibernate.connection.maxIdleTime">7000</property>
         <property name="show_sql">true</property>
-        <property name="hibernate.hbm2ddl.auto">create</property>
+        <property name="hibernate.hbm2ddl.auto">none</property>
 
         <!-- Specifying Session Context -->
         <property name="hibernate.current_session_context_class">org.hibernate.context.internal.ThreadLocalSessionContext</property>
