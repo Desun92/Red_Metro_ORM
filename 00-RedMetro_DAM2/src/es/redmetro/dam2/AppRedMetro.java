@@ -16,6 +16,8 @@ import es.redmetro.dam2.vo.*;
 public class AppRedMetro {
 	public static void main(String[] args) {
 		
+		//PRUEBA XML
+		
 		/*UtilidadHibernate utilidad = new UtilidadHibernate();
 		utilidad.getSession(); CREAR LAS TABLAS*/
 		
