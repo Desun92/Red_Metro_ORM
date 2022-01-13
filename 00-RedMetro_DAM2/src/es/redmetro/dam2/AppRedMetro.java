@@ -27,7 +27,9 @@ public class AppRedMetro {
 		LineaHibernateDAO operacionLinea = new LineaHibernateDAO();
 		TrenHibernateDAO operacionTren = new TrenHibernateDAO();
 		
-		Color color = new Color();
+		//MODIFICAR LINEA 12 CON EL NOMBRE LARGO METROSUR EN LUGAR DE METROUR
+		
+		/*Color color = new Color();
 		color = operacionColor.consultarPorID(12, Color.class);
 		
 		Linea lineaModificar = new Linea();
@@ -36,9 +38,10 @@ public class AppRedMetro {
 		lineaModificar.setNombreLargo("Metrosur");
 		lineaModificar.setKilometros(10.75f);
 		lineaModificar.setColor(color);
-		operacionLinea.modificar(lineaModificar);
+		operacionLinea.modificar(lineaModificar);*/
 
-		
+		//----------------------------------------------------------------------
+		//----------------------------------------------------------------------
 		
 		/*List<Tren> listaTrenes = new ArrayList<Tren>();
 		List<Acceso> listaAccesos = new ArrayList<Acceso>();
