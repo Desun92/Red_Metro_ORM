@@ -1,7 +1,6 @@
 package es.redmetro.dam2.vo;
 
 import java.util.List;
-import java.util.Set;
 
 public class Linea {
 
@@ -10,7 +9,14 @@ public class Linea {
 	private String nombreLargo;
 	private Color color;
 	private float kilometros;
+	private List<Estacion> codigoEstaciones;
 	
+	public List<Estacion> getCodigoEstaciones() {
+		return codigoEstaciones;
+	}
+	public void setCodigoEstaciones(List<Estacion> codigoEstaciones) {
+		this.codigoEstaciones = codigoEstaciones;
+	}
 	public int getCodigoLinea() {
 		return codigoLinea;
 	}
