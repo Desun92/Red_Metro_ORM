@@ -143,23 +143,30 @@ public class APPPruebaFTP {
 		    	NodeList contenidoDireccion = elemento.getElementsByTagName("direccion");
 		    	String direccion = contenidoDireccion.item(0).getTextContent();
 		    	
-
-		    	
 		    	Estacion estacion = new Estacion();
 		    	estacion.setCodigoEstacion(codEstacion);
 		    	estacion.setNombre(nombre);
 		    	estacion.setDireccion(direccion);
-		    	
-		    	//Nos creamos una lineaEstacion con el codigo de esta estacion y el codigo de las lineas que haya en el XML asi como su orden
-		    	LineaEstacion lineaEstacion = new LineaEstacion();
-		    	lineaEstacion.setEstacion(estacion);
-		    	lineaEstacion.setLinea(operacionLinea.consultarPorID(codEstacion, Linea.class));
-		    	lineaEstacion.setOrdenM(codEstacion);
-		    	
-		    	//Una vez tengamos creada la lineaEstacion la añadimos al arrayList de lineasEstaciones y se la pasamos a la estacion
-		    	lineaEstacionList.add(lineaEstacion);
+		    	  	
+		    	NodeList contenidoLinea = elemento.getElementsByTagName("linea");
+		    	for(int i=0; i<contenidoLinea.getLength();i++) {
+		    		Node nNodeLinea = contenidoLinea.item(i);
+		    		if(nNodeLinea.getNodeType()==Node.ELEMENT_NODE) {
+		    			elemento = (Element) nNodeLinea;
+		    			
+		    			int codLinea = Integer.parseInt(elemento.getAttribute("cod_linea"));
+		    			
+		    			NodeList contenidoOrden = elemento.getElementsByTagName("orden");
+		    			int orden = Integer.parseInt(contenidoOrden.item(0).getTextContent());
+		    			
+				    	LineaEstacion lineaEstacion = new LineaEstacion();
+				    	lineaEstacion.setEstacion(estacion);
+		    			lineaEstacion.setLinea(operacionLinea.consultarPorID(codLinea, Linea.class));
+				    	lineaEstacion.setOrdenM(orden);
+				    	lineaEstacionList.add(lineaEstacion);
+		    		}
+		    	}
 		    	estacion.setLineaEstacion(lineaEstacionList);
-		    	
 		    	estaciones.add(estacion);
 			}
 		}
@@ -177,7 +184,7 @@ public class APPPruebaFTP {
 		    	NodeList contenidoAccesoDiscapacidad = elemento.getElementsByTagName("acceso_discapacidad");
 		    	int accesoDiscapacidad = Integer.parseInt(contenidoAccesoDiscapacidad.item(0).getTextContent());
 		    	
-		    	NodeList contenidoCodEstacion = elemento.getElementsByTagName("cod_accesoestacion");
+		    	NodeList contenidoCodEstacion = elemento.getElementsByTagName("cod_estacion");
 		    	int codEstacion = Integer.parseInt(contenidoCodEstacion.item(0).getTextContent());
 
 		    	Estacion estacion = operacionEstacion.consultarPorID(codEstacion, Estacion.class);

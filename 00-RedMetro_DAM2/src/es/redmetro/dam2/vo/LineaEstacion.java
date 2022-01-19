@@ -26,4 +26,7 @@ public class LineaEstacion implements Serializable{
 	public void setOrdenM(int ordenM) {
 		this.ordenM = ordenM;
 	}
+	public String toString() {
+		return "LineaEstacion [linea=" + linea + ", estacion=" + estacion + ", ordenM=" + ordenM + "]";
+	}
 }

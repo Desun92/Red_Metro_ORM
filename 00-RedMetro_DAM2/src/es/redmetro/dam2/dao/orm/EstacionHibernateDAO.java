@@ -23,6 +23,7 @@ public class EstacionHibernateDAO implements IBaseDeDatos<Estacion> {
 		
 		try {
 			session.save(entidad);
+			tx.commit();
 			if(entidad.getLineaEstacion()!=null) {
 				for(LineaEstacion codigoLinea : entidad.getLineaEstacion()) {
 					LineaEstacion lineaEstacion = new LineaEstacion();
@@ -32,7 +33,6 @@ public class EstacionHibernateDAO implements IBaseDeDatos<Estacion> {
 					lineaEstacionOperacion.crear(lineaEstacion);
 				}
 			}
-			tx.commit();
 		}
 		catch(Exception e) {
 			e.printStackTrace();

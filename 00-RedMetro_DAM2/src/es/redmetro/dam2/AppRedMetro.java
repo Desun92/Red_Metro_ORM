@@ -45,20 +45,21 @@ public class AppRedMetro {
 		//----------------------------------------------------------------------
 		//----------------------------------------------------------------------
 		
-		/*List<Tren> listaTrenes = new ArrayList<Tren>();
+		List<Tren> listaTrenes = new ArrayList<Tren>();
 		List<Acceso> listaAccesos = new ArrayList<Acceso>();
 		List<Estacion> listaEstaciones = new ArrayList<Estacion>();
 		APPPruebaFTP.parseo(listaTrenes,listaAccesos,listaEstaciones);
 		
-		for(Tren tren : listaTrenes) {
+		/*for(Tren tren : listaTrenes) {
 			operacionTren.crear(tren);
-		}
+		}*/
 		
 		for(Estacion estacion : listaEstaciones) {
-			operacionEstacion.crear(estacion);
+			System.out.println(estacion.toString());
+			//operacionEstacion.crear(estacion);
 		}
 		
-		for(Acceso acceso : listaAccesos) {
+		/*for(Acceso acceso : listaAccesos) {
 			operacionAcceso.crear(acceso);
 		}*/
 		

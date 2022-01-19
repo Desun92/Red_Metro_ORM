@@ -67,7 +67,7 @@ public class LineaEstacionHibernateDAO implements IBaseDeDatos<LineaEstacion> {
 		LineaEstacion acceso = session.find(LineaEstacion.class, codEntidad);
 		
 		if(acceso==null) 
-			System.out.println("No existe el acceso");
+			System.out.println("No existe la linea_estacion");
 		
 		session.close();
 		return acceso;
@@ -77,7 +77,7 @@ public class LineaEstacionHibernateDAO implements IBaseDeDatos<LineaEstacion> {
 		List<LineaEstacion> lineaEstaciones = null;
 		Session session = UtilidadHibernate.getSession();
 		
-		lineaEstaciones = session.createNativeQuery("SELECT * FROM T_ACCESO", LineaEstacion.class).list();
+		lineaEstaciones = session.createNativeQuery("SELECT * FROM T_LINEA_ESTACION", LineaEstacion.class).list();
 		return lineaEstaciones;
 	}
 }
