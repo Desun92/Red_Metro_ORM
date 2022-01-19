@@ -7,7 +7,7 @@ public class Estacion {
 	private int codigoEstacion;
 	private String nombre;
 	private String direccion;
-	private List<Integer> codigoLineas;
+	private List<LineaEstacion> lineaEstacion;
 	private Integer orden;
 	
 	public int getOrden() {
@@ -16,11 +16,14 @@ public class Estacion {
 	public void setOrden(int orden) {
 		this.orden = orden;
 	}
-	public List<Integer> getCodigoLineas() {
-		return codigoLineas;
+	public List<LineaEstacion> getLineaEstacion() {
+		return lineaEstacion;
 	}
-	public void setCodigoLineas(List<Integer> codigoLineas) {
-		this.codigoLineas = codigoLineas;
+	public void setLineaEstacion(List<LineaEstacion> lineaEstacion) {
+		this.lineaEstacion = lineaEstacion;
+	}
+	public void setOrden(Integer orden) {
+		this.orden = orden;
 	}
 	public int getCodigoEstacion() {
 		return codigoEstacion;

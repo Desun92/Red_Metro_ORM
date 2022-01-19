@@ -8,8 +8,13 @@ import org.hibernate.Transaction;
 import es.redmetro.dam2.dao.IBaseDeDatos;
 import es.redmetro.dam2.utilidades.UtilidadHibernate;
 import es.redmetro.dam2.vo.Estacion;
+import es.redmetro.dam2.vo.Linea;
+import es.redmetro.dam2.vo.LineaEstacion;
 
 public class EstacionHibernateDAO implements IBaseDeDatos<Estacion> {
+	
+	private LineaHibernateDAO linea = new LineaHibernateDAO();
+	private LineaEstacionHibernateDAO lineaEstacionOperacion = new LineaEstacionHibernateDAO();
 	
 	public void crear(Estacion entidad) {
 		Session session = UtilidadHibernate.getSession();
@@ -18,6 +23,15 @@ public class EstacionHibernateDAO implements IBaseDeDatos<Estacion> {
 		
 		try {
 			session.save(entidad);
+			if(entidad.getLineaEstacion()!=null) {
+				for(LineaEstacion codigoLinea : entidad.getLineaEstacion()) {
+					LineaEstacion lineaEstacion = new LineaEstacion();
+					lineaEstacion.setEstacion(entidad);
+					lineaEstacion.setLinea(linea.consultarPorID(codigoLinea.getLinea().getCodigoLinea(), Linea.class));
+					lineaEstacion.setOrdenM(codigoLinea.getOrdenM());
+					lineaEstacionOperacion.crear(lineaEstacion);
+				}
+			}
 			tx.commit();
 		}
 		catch(Exception e) {

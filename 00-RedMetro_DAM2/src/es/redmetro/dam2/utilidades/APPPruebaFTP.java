@@ -8,6 +8,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -27,6 +28,7 @@ import org.xml.sax.SAXException;
 
 import es.redmetro.dam2.dao.orm.CocheraHibernateDAO;
 import es.redmetro.dam2.dao.orm.EstacionHibernateDAO;
+import es.redmetro.dam2.dao.orm.LineaEstacionHibernateDAO;
 import es.redmetro.dam2.dao.orm.LineaHibernateDAO;
 import es.redmetro.dam2.vo.*;
 
@@ -36,6 +38,9 @@ public class APPPruebaFTP {
 	
     EstacionHibernateDAO operacionEstacion = new EstacionHibernateDAO();
 	CocheraHibernateDAO operacionCochera = new CocheraHibernateDAO();
+	LineaHibernateDAO operacionLinea = new LineaHibernateDAO();
+	List<LineaEstacion> lineaEstacionList = new ArrayList<LineaEstacion>();
+	
     String server = GestorConfiguracion.getInfoConfiguracion("server.filezilla");
     int port = Integer.parseInt(GestorConfiguracion.getInfoConfiguracion("port.filezilla"));
     String user = GestorConfiguracion.getInfoConfiguracion("user.filezilla");
@@ -117,7 +122,6 @@ public class APPPruebaFTP {
 		    	
 		    	NodeList contenidoCodLinea = elemento.getElementsByTagName("cod_linea");
 		    	int codLinea = Integer.parseInt(contenidoCodLinea.item(0).getTextContent());
-		    	LineaHibernateDAO operacionLinea = new LineaHibernateDAO();
 		    	Linea linea = operacionLinea.consultarPorID(codLinea, Linea.class);
 
 		    	Tren tren = new Tren(codTren,modelo,fecha,empresa,linea,cochera);
@@ -139,10 +143,22 @@ public class APPPruebaFTP {
 		    	NodeList contenidoDireccion = elemento.getElementsByTagName("direccion");
 		    	String direccion = contenidoDireccion.item(0).getTextContent();
 		    	
+
+		    	
 		    	Estacion estacion = new Estacion();
 		    	estacion.setCodigoEstacion(codEstacion);
 		    	estacion.setNombre(nombre);
 		    	estacion.setDireccion(direccion);
+		    	
+		    	//Nos creamos una lineaEstacion con el codigo de esta estacion y el codigo de las lineas que haya en el XML asi como su orden
+		    	LineaEstacion lineaEstacion = new LineaEstacion();
+		    	lineaEstacion.setEstacion(estacion);
+		    	lineaEstacion.setLinea(operacionLinea.consultarPorID(codEstacion, Linea.class));
+		    	lineaEstacion.setOrdenM(codEstacion);
+		    	
+		    	//Una vez tengamos creada la lineaEstacion la añadimos al arrayList de lineasEstaciones y se la pasamos a la estacion
+		    	lineaEstacionList.add(lineaEstacion);
+		    	estacion.setLineaEstacion(lineaEstacionList);
 		    	
 		    	estaciones.add(estacion);
 			}
