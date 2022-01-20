@@ -52,14 +52,13 @@ public class AppRedMetro {
 		
 		/*for(Tren tren : listaTrenes) {
 			operacionTren.crear(tren);
-		}*/
-		
-		for(Estacion estacion : listaEstaciones) {
-			System.out.println(estacion.toString());
-			//operacionEstacion.crear(estacion);
 		}
 		
-		/*for(Acceso acceso : listaAccesos) {
+		for(Estacion estacion : listaEstaciones) {
+			operacionEstacion.crear(estacion);
+		}
+		
+		for(Acceso acceso : listaAccesos) {
 			operacionAcceso.crear(acceso);
 		}*/
 		

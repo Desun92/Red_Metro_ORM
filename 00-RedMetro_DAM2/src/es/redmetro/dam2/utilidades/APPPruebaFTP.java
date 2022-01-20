@@ -39,7 +39,8 @@ public class APPPruebaFTP {
     EstacionHibernateDAO operacionEstacion = new EstacionHibernateDAO();
 	CocheraHibernateDAO operacionCochera = new CocheraHibernateDAO();
 	LineaHibernateDAO operacionLinea = new LineaHibernateDAO();
-	List<LineaEstacion> lineaEstacionList = new ArrayList<LineaEstacion>();
+	LineaEstacionHibernateDAO operacionLineaEstacion = new LineaEstacionHibernateDAO();
+	List<LineaEstacion> lineaEstacionList;
 	
     String server = GestorConfiguracion.getInfoConfiguracion("server.filezilla");
     int port = Integer.parseInt(GestorConfiguracion.getInfoConfiguracion("port.filezilla"));
@@ -147,6 +148,7 @@ public class APPPruebaFTP {
 		    	estacion.setCodigoEstacion(codEstacion);
 		    	estacion.setNombre(nombre);
 		    	estacion.setDireccion(direccion);
+		    	lineaEstacionList = new ArrayList<LineaEstacion>();
 		    	  	
 		    	NodeList contenidoLinea = elemento.getElementsByTagName("linea");
 		    	for(int i=0; i<contenidoLinea.getLength();i++) {
